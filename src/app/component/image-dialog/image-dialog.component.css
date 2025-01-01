@@ -1,0 +1,23 @@
+.dialog-container {
+    padding: 20px;
+    min-width: 600px;
+  }
+  
+  .image-box {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .image-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .actions-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 0;
+    margin-top: 16px;
+  }

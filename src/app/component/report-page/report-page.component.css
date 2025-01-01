@@ -1,0 +1,51 @@
+.container {
+    padding: 20px;
+    
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
+  
+  .filter-form {
+    margin-bottom: 20px;
+    
+    .filter-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+      
+      mat-form-field {
+        flex: 1;
+        min-width: 200px;
+      }
+    }
+  }
+  
+  table {
+    width: 100%;
+    margin-bottom: 20px;
+    
+    .defective {
+      color: #f44336;
+    }
+    
+    .mat-column-actions {
+      width: 100px;
+      text-align: center;
+    }
+  }
+  
+  mat-paginator {
+    margin-top: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .filter-row {
+      flex-direction: column;
+      
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }

@@ -1,0 +1,63 @@
+<!-- Modal Component -->
+<div class="image-modal" *ngIf="isModalOpen" (click)="closeModal()">
+    <button class="modal-close" (click)="closeModal()">×</button>
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <img [src]="modalImage" alt="Büyütülmüş Görüntü">
+    </div>
+</div>
+
+
+<!-- src/app/components/home-page/home-page.component.html -->
+<div class="container">
+
+    <div class="image-container">
+        <!-- Original Image Section -->
+        <div class="image-section">
+            <h2>Orijinal Görüntü</h2>
+            <div class="image-wrapper">
+                <img [src]="currentProduct?.originalImage" 
+                     alt="Orijinal Metal Ürün" 
+                     *ngIf="currentProduct?.originalImage"
+                     (click)="openModal(currentProduct?.originalImage)">
+            </div>
+            
+            <div class="product-info" *ngIf="currentProduct">
+                <p class="product-name">Ürün Adı: {{currentProduct.name}}</p>
+                <p>Zaman: {{currentProduct.timestamp | date:'medium'}}</p>
+            </div>
+        </div>
+
+        <!-- Processed Image Section -->
+        <div class="image-section">
+            <h2>İşlenmiş Görüntü</h2>
+            <div class="image-wrapper">
+                <img [src]="currentProduct?.processedImage" 
+                     alt="İşlenmiş Metal Ürün" 
+                     *ngIf="currentProduct?.processedImage"
+                     (click)="openModal(currentProduct?.processedImage)">
+            </div>
+
+            <!-- Defect Information -->
+            <div class="defects-container" *ngIf="currentProduct?.defective">
+                <h3>Tespit Edilen Kusurlar</h3>
+                <div class="defect-list">
+                    <div class="defect-item" *ngFor="let defect of currentProduct?.defectDTOS">
+                        <p class="defect-type">Tür: {{defect.defectType}}</p>
+                        <p class="confidence">Güven Oranı: {{defect.confidenceRate}}</p>
+                        <p class="coordinates">Koordinatlar: {{defect.coordinates}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No Defects -->
+            <div class="no-defects-container" *ngIf="currentProduct?.defective === false">
+                <h3>Kusursuz Ürün</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detection Controls Section -->
+    <div class="detection-controls-wrapper">
+        <app-detection></app-detection>
+    </div>
+</div>

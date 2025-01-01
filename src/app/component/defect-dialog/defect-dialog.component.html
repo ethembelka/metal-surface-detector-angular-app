@@ -1,0 +1,55 @@
+<!-- defect-dialog.component.html -->
+<div class="dialog-container">
+    <h2 mat-dialog-title>Defect Details for {{data.name}}</h2>
+    
+    <mat-dialog-content>
+      <div class="image-container">
+        <div class="image-box">
+          <h3>Original Image</h3>
+          <img [src]="'data:image/jpeg;base64,' + data.originalImage" 
+               alt="Original Image"
+               *ngIf="data.originalImage">
+        </div>
+        
+        <div class="image-box">
+          <h3>Processed Image</h3>
+          <img [src]="'data:image/jpeg;base64,' + data.processedImage" 
+               alt="Processed Image"
+               *ngIf="data.processedImage">
+        </div>
+      </div>
+  
+      <div class="table-container" *ngIf="defectDataSource.length">
+        <table mat-table [dataSource]="defectDataSource" class="defect-table">
+          <!-- Defect Type Column -->
+          <ng-container matColumnDef="defectType">
+            <th mat-header-cell *matHeaderCellDef> Type </th>
+            <td mat-cell *matCellDef="let defect"> {{defect.defectType}} </td>
+          </ng-container>
+  
+          <!-- Confidence Rate Column -->
+          <ng-container matColumnDef="confidenceRate">
+            <th mat-header-cell *matHeaderCellDef> Confidence </th>
+            <td mat-cell *matCellDef="let defect"> {{defect.confidenceRate | percent:'1.0-2'}} </td>
+          </ng-container>
+  
+          <!-- Coordinates Column -->
+          <ng-container matColumnDef="coordinates">
+            <th mat-header-cell *matHeaderCellDef> Location </th>
+            <td mat-cell *matCellDef="let defect"> {{defect.coordinates}} </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="defectColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: defectColumns;"></tr>
+        </table>
+      </div>
+  
+      <div class="no-defects" *ngIf="!defectDataSource.length">
+        No defects found for this product.
+      </div>
+    </mat-dialog-content>
+  
+    <div mat-dialog-actions class="actions-container">
+      <button mat-button (click)="onClose()">Close</button>
+    </div>
+  </div>

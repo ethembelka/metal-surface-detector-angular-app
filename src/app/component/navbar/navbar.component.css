@@ -1,0 +1,9 @@
+.navbar {
+    margin-bottom: 20px; /* Navbar ile içerik arasındaki boşluk */
+  }
+  
+  .nav-link.active {
+    font-weight: bold;
+    color: #007bff;
+  }
+  

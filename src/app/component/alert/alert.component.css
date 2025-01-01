@@ -1,0 +1,36 @@
+.alert-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    animation: fade-in 0.3s ease-out;
+  }
+  
+  .alert.success {
+    background-color: #28a745; /* Yeşil */
+  }
+  
+  .alert.warning {
+    background-color: #ffc107; /* Sarı */
+  }
+  
+  .alert.error {
+    background-color: #dc3545; /* Kırmızı */
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

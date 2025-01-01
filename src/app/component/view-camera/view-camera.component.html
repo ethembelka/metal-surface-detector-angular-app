@@ -1,0 +1,10 @@
+  <!-- Video İçeriği -->
+  <div class="video-container">
+    <div class="controls">
+      <button class="control-button" (click)="startVideo()">Kamerayı Başlat</button>
+      <button class="control-button" (click)="stopVideo()">Kamerayı Durdur</button>
+    </div>
+    <div class="video-frame">
+      <img #videoElement [src]="videoUrl" alt="Video Yayını">
+    </div>
+  </div>

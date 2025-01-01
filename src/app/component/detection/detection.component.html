@@ -1,0 +1,36 @@
+<app-alert *ngIf="alertMessage" [message]="alertMessage" [type]="alertType"></app-alert>
+<div class="detection-controls">
+    <!-- Tarama başlatma butonu -->
+    <button 
+      *ngIf="status === 'stopped'"
+      (click)="startDetection()"
+      [disabled]="loading"
+      class="btn btn-primary">
+      {{ loading ? 'Başlatılıyor...' : 'Taramayı Başlat' }}
+    </button>
+  
+    <!-- Tarama durumu göstergesi -->
+    <div *ngIf="status === 'running'" class="detection-status">
+      <span class="status-text">Tarama Devam Ediyor...</span>
+      <button 
+        (click)="stopDetection()"
+        [disabled]="loading"
+        class="btn btn-danger">
+        {{ loading ? 'Durduruluyor...' : 'Taramayı Durdur' }}
+      </button>
+
+      <!-- Fotoğraf çek butonu -->
+      <button 
+        (click)="capturePhoto()"
+        [disabled]="loading"
+        class="btn btn-info mt-2">
+        {{ takePhotoLoading ? 'Fotoğraf Çekiliyor...' : 'Fotoğraf Çek' }}
+      </button>
+
+    </div>
+  
+    <!-- Hata mesajı -->
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+  </div>

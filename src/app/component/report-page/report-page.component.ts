@@ -129,7 +129,7 @@ export class ReportPageComponent implements OnInit {
     this.filterMetalProducts(filter)
       .subscribe((response: PageResponse<MetalProduct>) => {
         this.dataSource = response.content;
-        console.log(this.dataSource);
+        //console.log(this.dataSource);
         this.totalElements = response.totalElements;
       });
   }
